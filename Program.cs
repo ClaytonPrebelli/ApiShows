@@ -32,6 +32,9 @@ builder.Services.AddScoped<IShowRepository, ShowRepository>();
 builder.Services.AddScoped<IContratanteRepository, ContratanteRepository>();
 builder.Services.AddScoped<ILocalRepository, LocalRepository>();
 
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
@@ -43,6 +46,9 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseCors("AllowAll");
 app.UseHttpsRedirection();
