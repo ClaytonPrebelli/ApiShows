@@ -43,5 +43,9 @@ public class Show
 
     public List<string> EstilosSolicitados { get; set; } = new();
 
+    public bool NecessitaNotaFiscal { get; set; }
+
+    public bool NotaEmitida { get; set; }
+
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 }
