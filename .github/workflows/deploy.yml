@@ -19,6 +19,18 @@ jobs:
       - name: Publish
         run: dotnet publish -c Release --output ./publish
 
+      - name: Inject connection string
+        env:
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          DB_DATABASE: ${{ secrets.DB_DATABASE }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        run: |
+          CONN="Server=${DB_HOST};Port=${DB_PORT};Database=${DB_DATABASE};User=${DB_USER};Password=${DB_PASSWORD};CharSet=utf8mb4;"
+          jq --arg conn "$CONN" '.ConnectionStrings.DefaultConnection = $conn' \
+            ./publish/appsettings.json > tmp.json && mv tmp.json ./publish/appsettings.json
+
       - name: Install lftp
         run: sudo apt-get update && sudo apt-get install -y lftp
 
