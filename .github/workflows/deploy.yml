@@ -27,7 +27,7 @@ jobs:
           DB_USER: ${{ secrets.DB_USER }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
         run: |
-          CONN="Server=${DB_HOST};Port=${DB_PORT};Database=${DB_DATABASE};User=${DB_USER};Password=${DB_PASSWORD};CharSet=utf8mb4;"
+          CONN="Server=${DB_HOST};Port=${DB_PORT};Database=${DB_DATABASE};User=${DB_USER};Password=${DB_PASSWORD};CharSet=utf8mb4;Pooling=true;"
           jq --arg conn "$CONN" '.ConnectionStrings.DefaultConnection = $conn' \
             ./publish/appsettings.json > tmp.json && mv tmp.json ./publish/appsettings.json
 
