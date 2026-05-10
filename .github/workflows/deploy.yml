@@ -31,17 +31,6 @@ jobs:
           jq --arg conn "$CONN" '.ConnectionStrings.DefaultConnection = $conn' \
             ./publish/appsettings.json > tmp.json && mv tmp.json ./publish/appsettings.json
 
-      - name: Install lftp
-        run: sudo apt-get update && sudo apt-get install -y lftp
-
-      - name: Stop app (upload app_offline.htm)
-        run: |
-          echo "Site em manutencao. Voltamos ja!" > app_offline.htm
-          lftp -c "open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} \
-            -e 'put app_offline.htm -o /apshows/app_offline.htm; quit' \
-            ${{ secrets.FTP_SERVER }}"
-          sleep 5
-
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
@@ -50,12 +39,5 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./publish/
           server-dir: /apshows/
-          dangerous-clean-slate: true
           log-level: standard
           git-ftp-args: --insecure
-
-      - name: Start app (remove app_offline.htm)
-        run: |
-          lftp -c "open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} \
-            -e 'rm /apshows/app_offline.htm; quit' \
-            ${{ secrets.FTP_SERVER }}"
