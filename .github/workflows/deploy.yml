@@ -1,0 +1,23 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '7.0'
+
+      - run: dotnet publish -c Release -o publish
+
+      # Connection string via env var (substitui o appsettings.json automaticamente)
+      - name: Deploy
+        env:
+          ConnectionStrings__DefaultConnection: "Server=${{ secrets.DB_HOST }};Port=3306;Database=${{ secrets.DB_DATABASE }};User=${{ secrets.DB_USER }};Password=${{ secrets.DB_PASSWORD }};CharSet=utf8mb4;"
+        run: |
+          echo "Deploy com conexao configurada"

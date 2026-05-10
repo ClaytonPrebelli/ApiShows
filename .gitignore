@@ -1,0 +1,29 @@
+## .NET
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Visual Studio
+.vs/
+*.sln.ide/
+
+## JetBrains Rider
+.idea/
+
+## VS Code
+.vscode/
+
+## Environment
+appsettings.Development.json
+appsettings.*.local.json
+
+## Secrets
+*. secrets.*
+*.key
+
+## OS
+.DS_Store
+Thumbs.db
