@@ -13,9 +13,14 @@ public class ContratanteRepository : IContratanteRepository
         _context = context;
     }
 
-    public async Task<List<Contratante>> GetAllAsync()
+    public async Task<List<Contratante>> GetAllAsync(string? search = null)
     {
-        return await _context.Contratantes
+        var query = _context.Contratantes.AsQueryable();
+
+        if (!string.IsNullOrWhiteSpace(search))
+            query = query.Where(c => c.Nome.Contains(search));
+
+        return await query
             .OrderBy(c => c.Nome)
             .ToListAsync();
     }

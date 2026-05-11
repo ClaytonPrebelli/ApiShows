@@ -24,6 +24,9 @@ appsettings.*.local.json
 *. secrets.*
 *.key
 
+## Project context (local only)
+AGENTS.md
+
 ## OS
 .DS_Store
 Thumbs.db

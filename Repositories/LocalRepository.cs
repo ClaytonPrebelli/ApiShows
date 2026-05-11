@@ -13,9 +13,14 @@ public class LocalRepository : ILocalRepository
         _context = context;
     }
 
-    public async Task<List<Local>> GetAllAsync()
+    public async Task<List<Local>> GetAllAsync(string? search = null)
     {
-        return await _context.Locais
+        var query = _context.Locais.AsQueryable();
+
+        if (!string.IsNullOrWhiteSpace(search))
+            query = query.Where(l => l.Nome.Contains(search));
+
+        return await query
             .OrderBy(l => l.Nome)
             .ToListAsync();
     }

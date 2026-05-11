@@ -16,9 +16,9 @@ public class LocaisController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<List<Local>>> GetAll()
+    public async Task<ActionResult<List<Local>>> GetAll([FromQuery] string? search)
     {
-        var locais = await _repository.GetAllAsync();
+        var locais = await _repository.GetAllAsync(search);
         return Ok(locais);
     }
 

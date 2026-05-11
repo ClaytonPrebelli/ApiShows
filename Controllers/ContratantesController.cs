@@ -16,9 +16,9 @@ public class ContratantesController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<List<Contratante>>> GetAll()
+    public async Task<ActionResult<List<Contratante>>> GetAll([FromQuery] string? search)
     {
-        var contratantes = await _repository.GetAllAsync();
+        var contratantes = await _repository.GetAllAsync(search);
         return Ok(contratantes);
     }
 
