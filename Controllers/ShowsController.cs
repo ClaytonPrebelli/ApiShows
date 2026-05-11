@@ -16,9 +16,9 @@ public class ShowsController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<List<Show>>> GetAll()
+    public async Task<ActionResult<List<Show>>> GetAll([FromQuery] int? mes, [FromQuery] int? ano)
     {
-        var shows = await _repository.GetAllAsync();
+        var shows = await _repository.GetAllAsync(ano, mes);
         return Ok(shows);
     }
 

@@ -15,9 +15,9 @@ public class Show
     [Required]
     public int LocalId { get; set; }
 
-    public Contratante Contratante { get; set; } = null!;
+    public Contratante? Contratante { get; set; }
 
-    public Local Local { get; set; } = null!;
+    public Local? Local { get; set; }
 
     [Required]
     public DateTime Data { get; set; }

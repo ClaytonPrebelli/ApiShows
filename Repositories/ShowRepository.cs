@@ -13,11 +13,19 @@ public class ShowRepository : IShowRepository
         _context = context;
     }
 
-    public async Task<List<Show>> GetAllAsync()
+    public async Task<List<Show>> GetAllAsync(int? year = null, int? month = null)
     {
-        return await _context.Shows
+        var query = _context.Shows
             .Include(s => s.Contratante)
             .Include(s => s.Local)
+            .AsQueryable();
+
+        if (year.HasValue && month.HasValue)
+        {
+            query = query.Where(s => s.Data.Year == year.Value && s.Data.Month == month.Value);
+        }
+
+        return await query
             .OrderByDescending(s => s.CreatedAt)
             .ToListAsync();
     }

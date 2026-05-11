@@ -4,7 +4,7 @@ namespace ApiShows.Repositories;
 
 public interface IShowRepository
 {
-    Task<List<Show>> GetAllAsync();
+    Task<List<Show>> GetAllAsync(int? year = null, int? month = null);
     Task<Show?> GetByIdAsync(int id);
     Task<Show> CreateAsync(Show show);
     Task<Show?> UpdateAsync(int id, Show show);

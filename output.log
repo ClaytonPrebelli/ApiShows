@@ -1,0 +1,20 @@
+Usando as configurações de inicialização de C:\Users\Clayton Prebelli\Projetos\ApiShows\Properties\launchSettings.json...
+Compilando...
+C:\Program Files\dotnet\sdk\10.0.201\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.EolTargetFrameworks.targets(32,5): warning NETSDK1138: não há mais suporte para a estrutura de destino 'net7.0' e ela não receberá atualizações de segurança no futuro. Confira https://aka.ms/dotnet-core-support para obter mais informações sobre a política de suporte. [C:\Users\Clayton Prebelli\Projetos\ApiShows\ApiShows.csproj]
+C:\Program Files\dotnet\sdk\10.0.201\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.EolTargetFrameworks.targets(32,5): warning NETSDK1138: não há mais suporte para a estrutura de destino 'net7.0' e ela não receberá atualizações de segurança no futuro. Confira https://aka.ms/dotnet-core-support para obter mais informações sobre a política de suporte. [C:\Users\Clayton Prebelli\Projetos\ApiShows\ApiShows.csproj]
+C:\Program Files\dotnet\sdk\10.0.201\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.EolTargetFrameworks.targets(32,5): warning NETSDK1138: não há mais suporte para a estrutura de destino 'net7.0' e ela não receberá atualizações de segurança no futuro. Confira https://aka.ms/dotnet-core-support para obter mais informações sobre a política de suporte. [C:\Users\Clayton Prebelli\Projetos\ApiShows\ApiShows.csproj]
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://localhost:5000
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: C:\Users\Clayton Prebelli\Projetos\ApiShows
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]
+      Failed to determine the https port for redirect.
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (164ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `c`.`Id`, `c`.`CreatedAt`, `c`.`Email`, `c`.`Nome`, `c`.`Telefone`
+      FROM `Contratantes` AS `c`
+      ORDER BY `c`.`Nome`

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.5.11626.173 insiders
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiShows", "ApiShows.csproj", "{AF0E9D6A-2D26-79DA-3487-9562C97BBA8C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF0E9D6A-2D26-79DA-3487-9562C97BBA8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF0E9D6A-2D26-79DA-3487-9562C97BBA8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF0E9D6A-2D26-79DA-3487-9562C97BBA8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF0E9D6A-2D26-79DA-3487-9562C97BBA8C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2F36F04C-9519-4AB8-945A-B490CEA33BDD}
+	EndGlobalSection
+EndGlobal
