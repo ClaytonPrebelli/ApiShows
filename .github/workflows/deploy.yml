@@ -31,6 +31,14 @@ jobs:
           jq --arg conn "$CONN" '.ConnectionStrings.DefaultConnection = $conn' \
             ./publish/appsettings.json > tmp.json && mv tmp.json ./publish/appsettings.json
 
+      - name: Create app_offline to stop the site
+        run: |
+          echo "<!DOCTYPE html><html><head><title>Em manutenção</title></head><body><h1>API em manutenção</h1></body></html>" > app_offline.htm
+          curl -T app_offline.htm "ftp://${{ secrets.FTP_SERVER }}/apshows/app_offline.htm" --user "${{ secrets.FTP_USERNAME }}:${{ secrets.FTP_PASSWORD }}" --ftp-create-dirs
+          
+      - name: Wait for shutdown
+        run: sleep 5
+
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
@@ -40,3 +48,7 @@ jobs:
           local-dir: ./publish/
           server-dir: /apshows/
           log-level: standard
+
+      - name: Remove app_offline to restart the site
+        run: |
+          curl -Q "DELE /apshows/app_offline.htm" "ftp://${{ secrets.FTP_SERVER }}" --user "${{ secrets.FTP_USERNAME }}:${{ secrets.FTP_PASSWORD }}"
